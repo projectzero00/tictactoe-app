@@ -49,7 +49,7 @@ game.forEach(element => {
 
     
 
-
+//bug por aqui
 cell.forEach((element, index) => {
     element.addEventListener('click', () => {
         if(player1 === true){
