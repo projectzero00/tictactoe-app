@@ -7,6 +7,7 @@ let game = []
 let winP1 = 0
 let winP2 = 0
 
+//populate the array with divs
 const loading = () => {
     switch (game.length) {
         case 0:
@@ -43,31 +44,31 @@ window.onload = loading
 let player1 = true
 let player2 = false
 
-function verificarGanhador(tabuleiro) {
-    const linhas = [
-        [[0, 0], [0, 1], [0, 2]], // primeira linha
-        [[1, 0], [1, 1], [1, 2]], // segunda linha
-        [[2, 0], [2, 1], [2, 2]], // terceira linha
-        [[0, 0], [1, 0], [2, 0]], // primeira coluna
-        [[0, 1], [1, 1], [2, 1]], // segunda coluna
-        [[0, 2], [1, 2], [2, 2]], // terceira coluna
-        [[0, 0], [1, 1], [2, 2]], // diagonal principal
-        [[0, 2], [1, 1], [2, 0]]  // diagonal secundária
+function verifyWin(table) {
+    const lines = [
+        [[0, 0], [0, 1], [0, 2]], // first line
+        [[1, 0], [1, 1], [1, 2]], // second line
+        [[2, 0], [2, 1], [2, 2]], // third line
+        [[0, 0], [1, 0], [2, 0]], // first column
+        [[0, 1], [1, 1], [2, 1]], // second column
+        [[0, 2], [1, 2], [2, 2]], // third column
+        [[0, 0], [1, 1], [2, 2]], // first diagonal
+        [[0, 2], [1, 1], [2, 0]]  // second diagonal
     ];
 
-    // Verifique todas as linhas, colunas e diagonais para ver se há um ganhador
-    for (let linha of linhas) {
-        const [a, b, c] = linha;
+    // Check all rows, columns and diagonals to see if there is a winner
+    for (let line of lines) {
+        const [a, b, c] = line;
         if (
-            tabuleiro[a[0]][a[1]] &&
-            tabuleiro[a[0]][a[1]] === tabuleiro[b[0]][b[1]] &&
-            tabuleiro[a[0]][a[1]] === tabuleiro[c[0]][c[1]]
+            table[a[0]][a[1]] &&
+            table[a[0]][a[1]] === table[b[0]][b[1]] &&
+            table[a[0]][a[1]] === table[c[0]][c[1]]
         ) {
-            return tabuleiro[a[0]][a[1]]; // retorna o símbolo (X ou O) do ganhador
+            return table[a[0]][a[1]]; // returns the symbol (X or O) of the winner
         }
     }
 
-    return null; // retorna null se não houver ganhador
+    return null; // returns null if there is no winner
 }
 
 
@@ -89,12 +90,12 @@ rows.forEach((row, rowIndex) => {
 
         }
 
-        if (verificarGanhador(game) === 'X') {
+        if (verifyWin(game) === 'X') {
             winP1++
             scoreP1.innerHTML = `Player 1: ${winP1}`
             
             resetwin()
-        } else if(verificarGanhador(game) === 'O'){
+        } else if( verifyWin(game) === 'O'){
             winP2++
             scoreP2.innerHTML = `Player 2: ${winP2}`
             resetwin()
@@ -110,38 +111,6 @@ resetBtn.addEventListener('click', () => {
     scoreP1.innerHTML = `Player 1: ${winP1}`
     scoreP2.innerHTML = `Player 2: ${winP2}` 
 })
-
-
-
-
-
-
-
-// newarray = [
-//     ['', '', ''],
-//     ['', '', ''],
-//     ['', '', '']
-// ]
-// rows.forEach((row, rowIndex) => {
-
-//     row.addEventListener('click', (e) => {
-//         const cellsInRow = row.querySelectorAll('.cell')
-//         const selectedCellIndex = Array.from(cellsInRow).indexOf(e.target)
-
-//         if (game[rowIndex][selectedCellIndex] === true) {
-//             newarray[rowIndex].splice([selectedCellIndex], 1, 'X')
-//             console.log(newarray)
-//         } else {
-//             newarray[rowIndex].splice([selectedCellIndex], 1, 'O')
-//         }
-//         for (let i = 0; i < 3; i++) {
-//             if (newarray[i][0] === newarray[i][1] && newarray[i][1] === newarray[i][2]) {
-//                 return console.log(`O player ${newarray[i][0]} ganhou`)
-//             }
-//         }
-//     })
-
-// })
 
 
 
