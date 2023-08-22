@@ -1,0 +1,30 @@
+.game{
+    border-style: none;
+    padding: 5px 20px 5px 20px;
+    background-color: rgb(230, 230, 230);
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.music{
+    border-style: none;
+    padding: 5px 20px 5px 20px;
+    background-color: rgb(230, 230, 230);
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.tech{
+    border-style: none;
+    padding: 5px 20px 5px 20px;
+    background-color: rgb(230, 230, 230);
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.istoggled{
+    background-color: black;
+    color: aliceblue;
+}
